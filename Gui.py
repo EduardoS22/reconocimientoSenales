@@ -10,61 +10,7 @@ from PIL import ImageTk
 import PIL.Image as im
 from tkinter import * 
 import cv2 as cv
-#import imutils
 
-
-"""
-def open_doc():
-    
-    pic = fl.askopenfilename(initialdir="C:/Users/eduardo.sanz/Desktop/ficha y CV/UNIR/TFM")
-    photo = PhotoImage(file=pic)
-    img = Label(gui, image=photo)
-    img.pack(side=LEFT)
-    
-    can = Canvas(gui)
-    can.pack(fill=BOTH)
-    can.create_image(400, 400, image=photo, anchor=NW)
-     
-    
-    
-
-gui = tk.Tk()
-gui.title("Detección de señales")
-gui.geometry("568x516")
-menuBar = Menu(gui)
-gui.config(menu=menuBar)
-fileMenu = Menu(menuBar)
-menuBar.add_cascade(label="Archivo", menu=fileMenu)
-fileMenu.add_command(label="Abrir fichero", command=open_doc)
-fileMenu.add_command(label="Salir", command=gui.destroy)
-
-#se puede configurar el tamaño tambien : frame.config(width=400,height=300)
-frame = Frame(gui, width=400, height=400)
-frame.config(bd=4)
-frame.config(cursor="")
-frame.config(relief="sunken")
-frame.pack(side=LEFT)
-
-
-
-botonOpen = Button(gui, text="open", command=open_doc)
-botonOpen.pack(side=RIGHT)
-
-#(photo = PhotoImage(file='./setosa.png')
-#img = Label(gui, image=photo)
-#img.pack(side=TOP)
-
-
-#img = fl.askopenfile(mode="r",initialdir="/")
-#img = Image.open(pic)
-#print(img)
-#im = Image.open('minion.jpg')
-#img = ImageTk.PhotoImage(im)
-#label = Label(gui,image=img).place(x=0,y=0)
-#label.pack()
-
-gui.mainloop()
-"""
 
 class Window:
     'Clase para crear el interfaz de usuraio'
