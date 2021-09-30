@@ -2,11 +2,11 @@
 
 Se recupera una foto o video y desde ahí, se comprueba si se tiene alguna señal
 
-- [gui](#gui.py)
-- [Main](#main.py)
+- [gui](#gui)
+- [Main](#main)
 
 
-# GUI.py
+# GUI
 
 Fichero GUI
 k
@@ -39,6 +39,6 @@ k
 
 
 
-# Main.py
+#Main
 
 Fichero Main
