@@ -4,7 +4,7 @@ Se recupera una foto o video y desde ahí, se comprueba si se tiene alguna seña
 
 - [gui](#gui)
 - [Main](#main)
-- [Prueba](#prueba
+- [Prueba](#prueba)
 
 
 # GUI
