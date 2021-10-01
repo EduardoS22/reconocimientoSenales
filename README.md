@@ -4,6 +4,7 @@ Se recupera una foto o video y desde ahí, se comprueba si se tiene alguna seña
 
 - [gui](#gui)
 - [Main](#main)
+- [Prueba](#prueba
 
 
 # GUI
@@ -42,3 +43,5 @@ k
 # Main
 
 Fichero Main
+
+# Prueba
