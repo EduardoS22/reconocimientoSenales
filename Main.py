@@ -1,13 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Sep 23 16:51:52 2021
-
 @author: eduardo.sanz
 """
 
-from Gui import Window
+from GUI.gui import Ui_MainWindow
+from PyQt5 import QtWidgets 
 
-gui = Window()
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_()) 
+   
 
 
 
