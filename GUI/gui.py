@@ -148,27 +148,35 @@ class Ui_MainWindow(object):
         nameFile = os.path.split(self.dialog[0][0])[-1]
         root, extension = os.path.splitext(nameFile)
         if extension in self.fotoExtension:
-            #recuperamos la foto a analizar
-            photo = Photo(self.dialog[0][0])
-            photo = photo.newPhoto()
-            photo, contours = photo.findContour()
-            h, w, ch = photo.shape
-            img = QtGui.QImage(photo.data, w, h, w * ch, QtGui.QImage.Format_RGB888)
+            self.pushButton_2.setEnabled(False)
+            self.pushButton_3.setEnabled(False)
+            im = cv.imread(self.dialog[0][0])
+            im = cv.resize(im,(687,429),interpolation = cv.INTER_AREA)
+            im = cv.cvtColor(im,cv.COLOR_BGR2RGB)
+            im = Photo(im)
+            image, contours = im.findContour()
+            keypoints = im.getKeyPoints()
+            h, w, ch = image.shape
+            img = QtGui.QImage(image.data, w, h, w * ch, QtGui.QImage.Format_RGB888)
             scene = QtWidgets.QGraphicsScene()
             scene.addPixmap(QtGui.QPixmap.fromImage(img))
             self.graphicsView.setScene(scene)
-            
-            
-        
+                      
         if extension in self.videoExtension:
+            self.pushButton_2.setEnabled(True)
+            self.pushButton_3.setEnabled(True)
             self.label.setText(str(self.dialog[0][0]))
+        
             self.cap = cv.VideoCapture(self.dialog[0][0])
             ret, frame = self.cap.read()
             if ret == True:          
-                frame = cv.resize(frame,(687,429),interpolation = cv.INTER_AREA)
-                frame = cv.cvtColor(frame,cv.COLOR_BGR2RGB)
-                h, w, ch = frame.shape
-                img = QtGui.QImage(frame.data, w, h, w * ch, QtGui.QImage.Format_RGB888)
+                im = cv.resize(frame,(687,429),interpolation = cv.INTER_AREA)
+                im = cv.cvtColor(im,cv.COLOR_BGR2RGB)                    
+                im = Photo(im)
+                image, contours = im.findContour()
+                keypoints = im.getKeyPoints()        
+                h, w, ch = image.shape
+                img = QtGui.QImage(image.data, w, h, w * ch, QtGui.QImage.Format_RGB888)
                 scene = QtWidgets.QGraphicsScene()
                 scene.addPixmap(QtGui.QPixmap.fromImage(img))
                 self.graphicsView.setScene(scene)
@@ -198,8 +206,6 @@ class Ui_MainWindow(object):
             scene.addPixmap(QtGui.QPixmap.fromImage(img))
             self.graphicsView.setScene(scene)
             position = self.cap.get(0)/self.fps
-            print("position:",position)
-            print("position final:",self.cap.get(7)-1)
             self.progressBar.setValue(position)
 
 
