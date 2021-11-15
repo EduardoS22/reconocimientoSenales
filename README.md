@@ -1,7 +1,7 @@
 
 - [Introducción](#introducción)
 - [Reconocimiento de señales](#reconocimiento-de-señales)
-- [Red neuronal convolucional]"#red-neuronal-convolucional)
+- [Red neuronal convolucional](#red-neuronal-convolucional)
 
 
 # Introducción
