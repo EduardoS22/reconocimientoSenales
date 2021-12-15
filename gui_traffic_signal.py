@@ -210,27 +210,27 @@ class Ui_MainWindow(object):
         self.conv_nnetwork = convolutional_nnetwork()
         model = " Model: sequential \n \
         _________________________________________________________________ \n \
-        Layer (type)  \t              Output Shape              Param #    \n \
+        Layer (type)             Output Shape                    Param #    \n \
         ================================================================  \n \
-        conv2d_21 (Conv2D) \t           (None, 30, 30, 32)        896        \n \
+        conv2d_21 (Conv2D)       (None, 30, 30, 32)              896        \n \
         _________________________________________________________________ \n \
-        max_pooling2d_14\t (MaxPooling (None, 15, 15, 32)        0          \n \
+        max_pooling2d_14         (MaxPooling (None, 15, 15, 32)  0          \n \
         _________________________________________________________________ \n \
-        dropout_14 (Dropout)\t         (None, 15, 15, 32)        0          \n \
+        dropout_14 (Dropout)     (None, 15, 15, 32)              0          \n \
         _________________________________________________________________ \n \
-        conv2d_22 (Conv2D)\t           (None, 13, 13, 64)        18496      \n \
+        conv2d_22 (Conv2D)       (None, 13, 13, 64)              18496      \n \
         _________________________________________________________________ \n \
-        max_pooling2d_15\t (MaxPooling (None, 6, 6, 64)          0          \n \
+        max_pooling2d_15         (MaxPooling (None, 6, 6, 64)    0          \n \
         _________________________________________________________________ \n \
-        dropout_15 (Dropout)\t         (None, 6, 6, 64)          0          \n \
+        dropout_15 (Dropout)     (None, 6, 6, 64)                0          \n \
         _________________________________________________________________ \n \
-        conv2d_23 (Conv2D) \t          (None, 4, 4, 64)          36928      \n \
+        conv2d_23 (Conv2D)       (None, 4, 4, 64)                36928      \n \
         _________________________________________________________________ \n \
-        flatten_7 (Flatten) \t          (None, 1024)              0          \n \
+        flatten_7 (Flatten)      (None, 1024)                    0          \n \
         _________________________________________________________________ \n \
-        dense_14 (Dense) \t            (None, 64)                65600      \n \
+        dense_14 (Dense)         (None, 64)                      65600      \n \
         _________________________________________________________________ \n \
-        dense_15 (Dense) \t             (None, 52)                3380       \n \
+        dense_15 (Dense)         (None, 52)                      3380       \n \
         ================================================================ \n \
         Total params: 125,300 \n \
         Trainable params: 125,300 \n \
@@ -255,22 +255,13 @@ class Ui_MainWindow(object):
     def train_model(self):
         
         self.pushButton.setEnabled(False)
-# =============================================================================
-#         text_label_2 = 'In process..... \n'
-#         self.plainTextEdit.setPlainText(text_label_2)
-# =============================================================================
         self.label_2.setText('In process.....')
         epochs = self.spinBox.text()
         step_per_epochs = self.spinBox_2.text()
         
         self.conv_nnetwork.fit_model(int(epochs), int(step_per_epochs))
-# =============================================================================
-#         text_label_2 = text_label_2 + history.params() + '\n'
-# =============================================================================
         
         self.label_2.setText('Finished OK')
-        # text_label_2 = text_label_2 + 'Finished OK'
-        # self.plainTextEdit.setPlainText(text_label_2)
         self.pushButton.setEnabled(True)
         self.pushButton_4.setEnabled(False)
 

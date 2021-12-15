@@ -20,18 +20,18 @@ class convolutional_nnetwork():
     
     HEIGHT = 32
     WIDTH = 32
-    BASE_DIR = r'.\archive\Train'
-    NUMBER_LABELS = 43
+    BASE_DIR = r'.\images\train'
+    NUMBER_LABELS = 52
     
     model = tf.keras.models.Sequential()
     
     def __init__(self):
         self.model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, activation='relu', input_shape=(self.WIDTH,self.HEIGHT,3)))
-        self.model.add(tf.keras.layers.MaxPool2D(2))
+        self.model.add(tf.keras.layers.MaxPool2D(pool_size=(2,2)))
         self.model.add(tf.keras.layers.Dropout(rate=0.25))
         
         self.model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, activation='relu', input_shape=(self.WIDTH,self.HEIGHT,3)))
-        self.model.add(tf.keras.layers.MaxPool2D(2))
+        self.model.add(tf.keras.layers.MaxPool2D(pool_size=(2,2)))
         self.model.add(tf.keras.layers.Dropout(rate=0.25))   
         
         self.model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=3, activation='relu'))
@@ -41,7 +41,7 @@ class convolutional_nnetwork():
         self.model.add(tf.keras.layers.Dense(self.NUMBER_LABELS, activation='sigmoid'))
         
         self.model.compile(loss='binary_crossentropy', optimizer=RMSprop(learning_rate=0.001), metrics=['accuracy'])
-
+        
     def get_model(self):
         
         return self.model
@@ -70,14 +70,17 @@ class convolutional_nnetwork():
         x_train, x_test, y_train, y_test = train_test_split(np.array(images), labels, test_size=0.2)
         self.model.fit(x_train, y_train, validation_data = (x_test, y_test), epochs=epochs, steps_per_epoch=step_per_epochs)
         
+        # return history
     
     def predict_image(self, image):
-            
-        
+                   
+        # class_signals = []
+        # for image in images:
         image = cv.resize(image,(self.WIDTH,self.HEIGHT),interpolation = cv.INTER_AREA)
         image = tf.expand_dims(image, axis=0)
         
         predictions = self.model.predict(image)
+        # class_signals.append(int(np.argmax(predictions)))
         class_signal = int(np.argmax(predictions))
         
         return class_signal
